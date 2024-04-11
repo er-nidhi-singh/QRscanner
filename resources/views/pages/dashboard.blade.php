@@ -29,8 +29,11 @@
                     </div>
                 </div>
             </div>
-          
+            <!-- sale 2 card end -->
 
+            <!-- product and new customar start -->
+     
+            <!-- Application Sales end -->
     	</div>
     </div>
 	<!-- push external js -->

@@ -6,6 +6,13 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\RolesController;
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\BannedChemicalsController;
+use App\Http\Controllers\ApprovedAcController;
+use App\Http\Controllers\UserRegistrationController;
+use App\Http\Controllers\PluckingDataController;
 use App\Http\Controllers\MasterDateController;
 
 /*
@@ -18,12 +25,19 @@ use App\Http\Controllers\MasterDateController;
 | contains the "web" middleware group. Now create something great!
 |
 */ 
-// Route::get('/', function () { return view('home'); });
+Route::get('/', function () { return view('home'); });
 
 
 Route::get('login', [LoginController::class,'showLoginForm'])->name('login');
 Route::post('login', [LoginController::class,'login']);
 Route::post('register', [RegisterController::class,'register']);
+
+Route::get('password/forget',  function () { 
+	return view('pages.forgot-password'); 
+})->name('password.forget');
+Route::post('password/email', [ForgotPasswordController::class,'sendResetLinkEmail'])->name('password.email');
+Route::get('password/reset/{token}', [ResetPasswordController::class,'showResetForm'])->name('password.reset');
+Route::post('password/reset', [ResetPasswordController::class,'reset'])->name('password.update');
 
 
 	// logout route
@@ -35,13 +49,17 @@ Route::post('register', [RegisterController::class,'register']);
 		return view('pages.dashboard'); 
 	})->name('dashboard');
 
-	Route::get('master-list',[MasterDateController::class, 'create']);
-	Route::post('master-store',[MasterDateController::class, 'store']);
-	Route::get('master-list',[MasterDateController::class, 'index']);
-
-	Route::get('bulk-master', [MasterDateController::class, 'bulk_master']);
-    Route::post('master_import', [MasterDateController::class, 'master_import']);
 
 
 
+Route::get('/register', function () { return view('pages.register'); });
+Route::get('/login-1', function () { return view('pages.login'); });
+
+
+Route::get('master', [MasterDateController::class,'create']);
+Route::post('master-store', [MasterDateController::class,'store']);
+Route::get('master-list', [MasterDateController::class,'index']);
+
+Route::get('bulk-master', [MasterDateController::class, 'bulk_master']);
+Route::post('master_import', [MasterDateController::class, 'master_import']);
 

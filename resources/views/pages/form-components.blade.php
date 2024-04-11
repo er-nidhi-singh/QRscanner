@@ -9,7 +9,7 @@
                     <div class="page-header-title">
                         <i class="ik ik-edit bg-blue"></i>
                         <div class="d-inline">
-                            <h5>Add QRScanner</h5>
+                            <h5>Add Banned Chemicals</h5>
                             <!--<span>{{ __('lorem ipsum dolor sit amet, consectetur adipisicing elit')}}</span>-->
                         </div>
                     </div>
@@ -31,13 +31,17 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header"><h3>Excel Import</h3></div>
+                    <div class="card-header"><h3>Banned Chemicals Form</h3></div>
                     <div class="card-body">
-                        <form class="forms-sample" action="{{ url('master_import') }}" method="post" enctype="multipart/form-data">
+                        <form class="forms-sample" action="{{ url('banned-store') }}" method="post" enctype="multipart/form-data">
                             @csrf                            
                             <div class="form-group">
-                                <label for="exampleInputUsername1">Excel import</label>
-                                <input type="file"  name="excel"class="form-control" id="exampleInputUsername1" placeholder="Chemical Name">
+                                <label for="exampleInputUsername1">Chemical Name</label>
+                                <input type="text"  name="name"class="form-control" id="exampleInputUsername1" placeholder="Chemical Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Description</label>
+                                <input type="text" name="description" class="form-control" id="exampleInputUsername1" placeholder="Chemical Name">
                             </div>
           
                             <button type="submit" class="btn btn-primary mr-2" name="submit">{{ __('Submit')}}</button>

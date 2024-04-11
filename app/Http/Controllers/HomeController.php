@@ -9,8 +9,6 @@ class HomeController extends Controller
 {
     public function index(): View
     {
-        $galleryCount = Gallery::count();
-    
         return view('home');
     }
 

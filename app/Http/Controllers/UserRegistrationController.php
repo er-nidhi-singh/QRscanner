@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\MasterDate;
+use App\Models\UserRegistration;
 use Illuminate\Http\Request;
-use Maatwebsite\Excel\Facades\Excel;
-use App\Imports\ImportMaster;
-use Illuminate\Support\Facades\Validator;
 
-
-class MasterDateController extends Controller
+class UserRegistrationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +14,8 @@ class MasterDateController extends Controller
      */
     public function index()
     {
-        $result = MasterDate::orderBy("id", "DESC")->get();
-        return view('pages.masterlist',compact('result'));
+        $result = UserRegistration::orderBy("id", "DESC")->get();
+        return view('pages.user_reg',compact('result'));
     }
 
     /**
@@ -29,18 +25,8 @@ class MasterDateController extends Controller
      */
     public function create()
     {
-        return view('pages.addmaster');
+        return view('pages.add_register');
 
-    }
-    public function bulk_master()
-    {
-        return view('pages.bulk_master');
-    }
-
-    public function master_import(Request $request)
-    {
-        Excel::import(new ImportMaster, $request->file('excel'));
-        return redirect('master-list');
     }
 
     /**
@@ -51,16 +37,21 @@ class MasterDateController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        UserRegistration::create([
+            'username'=>$request->username,
+            'vendor_id'=>$request->vendor_id,
+            'pincode'=>$request->pincode,
+    ]);
+    return redirect('register-list');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\MasterDate  $masterDate
+     * @param  \App\Models\UserRegistration  $userRegistration
      * @return \Illuminate\Http\Response
      */
-    public function show(MasterDate $masterDate)
+    public function show(UserRegistration $userRegistration)
     {
         //
     }
@@ -68,35 +59,34 @@ class MasterDateController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\MasterDate  $masterDate
+     * @param  \App\Models\UserRegistration  $userRegistration
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $result = MasterDate::where('id',$id)->first();
-        return view('pages.masterlist',compact('result'));
+       
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\MasterDate  $masterDate
+     * @param  \App\Models\UserRegistration  $userRegistration
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request,)
     {
-        
+       
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\MasterDate  $masterDate
+     * @param  \App\Models\UserRegistration  $userRegistration
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-      
+       
     }
 }
