@@ -9,10 +9,6 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\PermissionController;
-use App\Http\Controllers\BannedChemicalsController;
-use App\Http\Controllers\ApprovedAcController;
-use App\Http\Controllers\UserRegistrationController;
-use App\Http\Controllers\PluckingDataController;
 use App\Http\Controllers\MasterDateController;
 
 /*
@@ -48,8 +44,6 @@ Route::post('password/reset', [ResetPasswordController::class,'reset'])->name('p
 	Route::get('/dashboard', function () { 
 		return view('pages.dashboard'); 
 	})->name('dashboard');
-
-
 
 
 Route::get('/register', function () { return view('pages.register'); });
