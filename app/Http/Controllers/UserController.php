@@ -21,8 +21,15 @@ class UserController extends Controller
      */
     public function index(): View
     {
-        return view('users');
-    }
+        
+        $result =User::where('status','user')->get();
+        return view('pages.user_list',compact('result'));   
+     }
+     public function User_Delete(): View
+     {
+        UserData::where("id", $id)->delete();
+        return redirect("user-list")->withSuccess("UserData deleted successfully");
+     }
 
     /**
      * Show User List

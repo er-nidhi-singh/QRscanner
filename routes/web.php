@@ -10,6 +10,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\MasterDateController;
+use App\Http\Controllers\UserDataController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +45,14 @@ Route::post('password/reset', [ResetPasswordController::class,'reset'])->name('p
 	Route::get('/dashboard', function () { 
 		return view('pages.dashboard'); 
 	})->name('dashboard');
+
+Route::get('userdata-list', [UserDataController::class,'index']);
+Route::get('userdata-delete/{id}', [UserDataController::class, 'destroy']);
+
+Route::get('user-list', [UserController::class,'index']);
+Route::get('user-delete/{id}', [UserController::class,'User_Delete']);
+
+
 
 Route::get('master', [MasterDateController::class,'create']);
 Route::post('master-store', [MasterDateController::class,'store']);
