@@ -38,17 +38,12 @@ Route::post('password/reset', [ResetPasswordController::class,'reset'])->name('p
 
 	// logout route
 	Route::get('/logout', [LoginController::class,'logout']);
-	Route::get('/clear-cache', [HomeController::class,'clearCache']);
+	// Route::get('/clear-cache', [HomeController::class,'clearCache']);
 
 	// dashboard route  
 	Route::get('/dashboard', function () { 
 		return view('pages.dashboard'); 
 	})->name('dashboard');
-
-
-Route::get('/register', function () { return view('pages.register'); });
-Route::get('/login-1', function () { return view('pages.login'); });
-
 
 Route::get('master', [MasterDateController::class,'create']);
 Route::post('master-store', [MasterDateController::class,'store']);
