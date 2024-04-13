@@ -20,6 +20,9 @@
                 <div class="nav-item {{ ($segment1 == 'dashboard') ? 'active' : '' }}">
                     <a href="{{route('dashboard')}}"><i class="ik ik-bar-chart-2"></i><span>{{ __('Dashboard')}}</span></a>
                 </div>
+               
+
+
                 <!-- Include demo pages inside sidebar start-->
                 @include('pages.sidebar-menu')
                 <!-- Include demo pages inside sidebar end-->

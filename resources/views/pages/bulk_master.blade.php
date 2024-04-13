@@ -9,7 +9,7 @@
                     <div class="page-header-title">
                         <i class="ik ik-edit bg-blue"></i>
                         <div class="d-inline">
-                            <h5>Add Qrscanner</h5>
+                            <h5>Add QRScanner</h5>
                             <!--<span>{{ __('lorem ipsum dolor sit amet, consectetur adipisicing elit')}}</span>-->
                         </div>
                     </div>
