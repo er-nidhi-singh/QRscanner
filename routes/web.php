@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\app\QrController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -18,7 +19,7 @@ use App\Http\Controllers\MasterDateController;
 | contains the "web" middleware group. Now create something great!
 |
 */ 
-// Route::get('/', function () { return view('home'); });
+Route::get('/', function () { return view('qrapp.scanner'); });
 
 
 Route::get('login', [LoginController::class,'showLoginForm'])->name('login');
@@ -41,6 +42,19 @@ Route::post('register', [RegisterController::class,'register']);
 
 	Route::get('bulk-master', [MasterDateController::class, 'bulk_master']);
     Route::post('master_import', [MasterDateController::class, 'master_import']);
+
+
+
+	Route::post('scanner', [QrController::class, 'scanner']);
+
+	Route::get('form/view', [QrController::class, 'formView'])->name('app.form.view');
+	Route::post('qrform/save/', [QrController::class, 'formSave'])->name('app.form.save');
+
+	Route::get('verifyQr/', [QrController::class, 'verifyQr'])->name('app.qr.verify');
+
+
+
+
 
 
 
